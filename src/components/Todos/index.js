@@ -1,20 +1,28 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { fetchTodos } from '../../apis/todos';
-import styles from './styles.module.css';
-import todos from './todos.jpg';
+import TodosView from './TodosView';
 
 class Todos extends Component {
+  state = {
+    loading: true,
+    todos: [],
+  };
+
   async componentDidMount() {
     const todos = await fetchTodos();
-    console.log(todos);
+    this.setState({
+      loading: false,
+      todos,
+    });
   }
 
   render() {
+    const { loading, todos } = this.state;
+    if (loading) {
+      return <div>Loading...</div>;
+    }
     return (
-      <Fragment>
-        <h1 id={styles.root}>Todos</h1>
-        <img alt="todos" src={todos} />
-      </Fragment>
+      <TodosView todos={todos} />
     );
   }
 }
