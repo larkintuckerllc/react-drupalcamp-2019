@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Todos from './components/Todos';
 import logo from './logo.svg';
 import './App.css';
 
@@ -19,6 +20,7 @@ class App extends Component {
           >
             Learn React
           </a>
+          <Todos />
         </header>
       </div>
     );
