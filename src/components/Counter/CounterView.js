@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 
 const CounterView = ({ counter, onIncrement }) => (
@@ -7,5 +8,10 @@ const CounterView = ({ counter, onIncrement }) => (
     <button onClick={onIncrement}>Increment</button>
   </Fragment>
 );
+
+CounterView.propTypes = {
+  counter: PropTypes.number.isRequired,
+  onIncrement: PropTypes.func.isRequired,
+}
 
 export default CounterView;
